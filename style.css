@@ -168,44 +168,122 @@ body {
     text-align: center;
 }
 
-/* Form Styles */
+/* Formulář pro zadávání aut (na celou stránku) */
 .car-form {
+    max-width: 800px; /* Maximální šířka formuláře */
+    width: 100%; /* Umožňuje přizpůsobení šířky */
+    height: auto; /* Výška se přizpůsobí obsahu */
+    margin: 0;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    margin: 20px auto;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    gap: 20px;
 }
 
-.car-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
+/* Styly pro formulář pro zadávání aut */
+.car-form {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Titulek formuláře */
+.car-form h2 {
+    font-size: 24px;
     color: #34495e;
-}
-
-.car-form input {
     margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
 }
 
+/* Styl pro labely formuláře */
+.car-form label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Vstupní pole formuláře */
+.car-form input[type="text"],
+.car-form input[type="number"],
+.car-form input[type="file"],
+.car-form textarea {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+/* Zvýraznění políček při zaostření */
+.car-form input[type="text"]:focus,
+.car-form input[type="number"]:focus,
+.car-form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    outline: none;
+}
+
+/* Textarea pro popis auta */
+.car-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Tlačítka formuláře */
 .car-form button {
-    padding: 10px;
+    padding: 12px;
     background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
     text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
 }
 
+/* Hover efekt pro tlačítka */
 .car-form button:hover {
     background-color: #2980b9;
+}
+
+/* Tlačítka při zakázání */
+.car-form button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Efekt pro alert chybové zprávy */
+.alert {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Responzivita pro mobilní zařízení */
+@media (max-width: 600px) {
+    .car-form {
+        padding: 20px;
+        width: 90%;
+    }
 }
 
 /* Map Container */
@@ -219,6 +297,7 @@ body {
 /* Table Styles */
 .cars-table {
     width: 100%;
+    height: auto; 
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -245,6 +324,162 @@ img {
     width: 80%; /* Adjust the percentage as needed to make images larger */
     margin: 0 auto; /* Centers the image */
 }
+
+
+/* Vylepšení vzhledu tabulky */
+.cars-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cars-table th,
+.cars-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.cars-table th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.cars-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.cars-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.cars-table td {
+    text-align: center;
+}
+
+/* Modální okno pro detail auta */
+#car-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* poloprůhledné pozadí */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Styly pro samotný obsah modálního okna */
+#car-details-modal > div {
+    background-color: #fff; /* bílý pozadí pro formulář */
+    padding: 30px;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 100%;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* stín pro efekt hloubky */
+}
+
+/* Titulek modálního okna */
+#car-details-title {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Zavírací tlačítko */
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Styl pro obrázek auta */
+#car-details-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+/* Formulář v modálním okně */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Inputy pro formulář */
+input[type="text"], input[type="number"], input[type="file"] {
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Zvýraznění inputu při zaostření */
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #4CAF50; /* barva rámečku na zelenou při zaostření */
+    outline: none;
+}
+
+/* Tlačítka pro uložení a odstranění */
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #607461;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Styly pro chybové hlášky (pokud nějaké existují) */
+.alert {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Animace pro modální okno */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#car-details-modal {
+    animation: fadeIn 0.3s ease-in;
+}
+
+
 
 /* Profile Image */
 .profile-img {
@@ -276,51 +511,7 @@ img {
     background-color: #f1f1f1;
 }
 
-/* Contact Section */
-.contact-form {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #34495e;
-}
-
-.contact-form input,
-.contact-form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.contact-form button {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-}
-
-.contact-form button:hover {
-    background-color: #2980b9;
-}
 
 .map-container {
     margin-top: 30px;
@@ -370,6 +561,91 @@ img {
 .notifications-table tr:hover {
     background-color: #f1f1f1;
 }
+
+#content-apps {
+    display: block; /* Zajistíme, že se sekce zobrazí */
+    margin-top: 20px;
+}
+
+.transaction-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.transaction-form h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.transaction-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.transaction-form input, 
+.transaction-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.transaction-form button {
+    background-color: #1e88e5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.transaction-form button:hover {
+    background-color: #1565c0;
+}
+
+.transactions-container {
+    display: flex;
+    gap: 20px;
+}
+
+.transaction-card {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.transaction-card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.transaction-card li {
+    margin-bottom: 10px;
+}
+
+.transaction-card li span {
+    font-weight: bold;
+}
+
+.transaction-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
