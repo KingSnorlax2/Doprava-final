@@ -41,6 +41,7 @@ function loadCars() {
             <td>${car.year}</td>
             <td>${car.mileage}</td>
             <td>${car.status}</td>
+            <td>${car.image ? `<img src="${car.image}" alt="Car Image" width="50" height="50">` : 'Není k dispozici'}</td>
         `;
         carsTableBody.appendChild(row);
     });
@@ -57,24 +58,42 @@ if (carForm) {
         const year = document.getElementById('year').value;
         const mileage = document.getElementById('mileage').value;
         const status = document.getElementById('status').value;
+        const imageFile = document.getElementById('image').files[0];
 
         if (!spz || !brand || !model || !year || !mileage || !status) {
             alert('Vyplňte všechna pole.');
             return;
         }
 
-        const cars = JSON.parse(localStorage.getItem('cars')) || [];
-        cars.push({ spz, brand, model, year, mileage, status });
-        localStorage.setItem('cars', JSON.stringify(cars));
-
-        alert('Auto bylo úspěšně přidáno!');
-        carForm.reset();
-
-        // Dynamically reload the cars table if visible
-        if (document.getElementById('content-tables').style.display !== 'none') {
-            loadCars();
+        let imageUrl = '';
+        if (imageFile) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                imageUrl = reader.result;
+                // Save car data along with the image
+                saveCarData(spz, brand, model, year, mileage, status, imageUrl);
+            };
+            reader.readAsDataURL(imageFile);
+        } else {
+            // If no image is selected, save without the image
+            saveCarData(spz, brand, model, year, mileage, status, imageUrl);
         }
     });
+}
+
+// Function to save car data
+function saveCarData(spz, brand, model, year, mileage, status, imageUrl) {
+    const cars = JSON.parse(localStorage.getItem('cars')) || [];
+    cars.push({ spz, brand, model, year, mileage, status, image: imageUrl });
+    localStorage.setItem('cars', JSON.stringify(cars));
+
+    alert('Auto bylo úspěšně přidáno!');
+    carForm.reset();
+
+    // Dynamically reload the cars table if visible
+    if (document.getElementById('content-tables').style.display !== 'none') {
+        loadCars();
+    }
 }
 
 // Load notifications into the notifications table
