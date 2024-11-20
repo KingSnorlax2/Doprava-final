@@ -237,6 +237,37 @@ body {
     text-transform: uppercase;
 }
 
+/* General Image Styling */
+img {
+    max-width: 100%; /* Ensures the image scales down with the container */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes space below the image */
+    width: 80%; /* Adjust the percentage as needed to make images larger */
+    margin: 0 auto; /* Centers the image */
+}
+
+/* Profile Image */
+.profile-img {
+    width: 100%; /* Makes the profile image fit the container */
+    height: auto;
+    object-fit: cover; /* Ensures the image doesn't get stretched */
+    margin: 0 auto 10px;
+}
+
+/* Image in Cars Table (if you have images there) */
+.cars-table img {
+    width: 200px; /* Set a specific width for images in the table */
+    height: 100px; /* Adjust height to maintain aspect ratio */
+    border-radius: 5px;
+}
+
+/* Map Image */
+.map-container img {
+    width: 100%; /* Map image will fill the container */
+    height: auto;
+}
+
+
 .cars-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
@@ -359,4 +390,3 @@ body {
         padding: 10px;
     }
 }
-
