@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -19,8 +21,6 @@
                     <li><a href="#" id="menu-souhrn" class="active">Souhrn</a></li>
                     <li><a href="#" id="menu-auta">Auta</a></li>
                     <li><a href="#" id="menu-tables">Tabulka Aut</a></li>
-                    <li><a href="#" id="menu-contact">Contact</a></li>
-                    <li><a href="#" id="menu-elements">Notifikace</a></li>
                     <li><a href="#" id="menu-apps">Apps</a></li>
                     <li><a href="#" id="menu-settings">Settings</a></li>
                 </ul>
@@ -63,88 +63,58 @@
                 </section>
             </div>
 
-            <!-- Auta Section -->
-            <div id="content-auta" class="content-section" style="display: none;">
-    <h1>Přidat Auto</h1>
-    <form id="car-form" class="car-form" enctype="multipart/form-data">
-        <label for="spz">SPZ:</label>
-        <input type="text" id="spz" name="spz" required>
-
-        <label for="brand">Značka:</label>
-        <input type="text" id="brand" name="brand" required>
-
-        <label for="model">Model:</label>
-        <input type="text" id="model" name="model" required>
-
-        <label for="year">Rok:</label>
-        <input type="number" id="year" name="year" required>
-
-        <label for="mileage">Nájezd (km):</label>
-        <input type="number" id="mileage" name="mileage" required>
-
-        <label for="status">Stav:</label>
-        <input type="text" id="status" name="status" required>
-
-        <label for="image">Obrázek:</label>
-        <input type="file" id="image" name="image" accept="image/*">
-
-        <button type="submit">Přidat</button>
-    </form>
-</div>
+                        <!-- Auta Section -->
+                        <div id="content-auta" class="content-section" style="display: none;">
+                            <h1>Přidat Auto</h1>
+                            <form id="car-form" class="car-form" enctype="multipart/form-data">
+                                <label for="spz">SPZ:</label>
+                                <input type="text" id="spz" name="spz" required>
+                        
+                                <label for="brand">Značka:</label>
+                                <input type="text" id="brand" name="brand" required>
+                        
+                                <label for="model">Model:</label>
+                                <input type="text" id="model" name="model" required>
+                        
+                                <label for="year">Rok:</label>
+                                <input type="number" id="year" name="year" required>
+                        
+                                <label for="mileage">Nájezd (km):</label>
+                                <input type="number" id="mileage" name="mileage" required>
+                        
+                                <label for="status">Stav:</label>
+                                <input type="text" id="status" name="status" required>
+                        
+                                <label for="image">Obrázek:</label>
+                                <input type="file" id="image" name="image" accept="image/*">
+                        
+                                <button type="submit">Přidat</button>
+                            </form>
+                        </div>
 
 
             <!-- Tables Section -->
             <div id="content-tables" class="content-section" style="display: none;">
                 <h1>Seznam Aut</h1>
-                <table class="cars-table" id="cars-table">
+                <table class="cars-table">
                     <thead>
                         <tr>
+                            <th>Obrázek</th>
                             <th>SPZ</th>
                             <th>Značka</th>
                             <th>Model</th>
                             <th>Rok</th>
-                            <th>Nájezd (km)</th>
+                            <th>Kilometry</th>
                             <th>Stav</th>
-                            <th>Obrázky</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Dynamicky generovaný obsah -->
+                    <tbody id="cars-table-body">
+                        <!-- Auta budou přidána dynamicky pomocí JS -->
                     </tbody>
                 </table>
+                
             </div>
 
-            <div id="content-contact" class="content-section" style="display: none;">
-                <h1>Kontaktujte nás</h1>
-                <p>Máte otázky? Neváhejte nám napsat prostřednictvím níže uvedeného formuláře.</p>
-                <div class="contact-form">
-                    <form id="support-form">
-                        <label for="name">Jméno:</label>
-                        <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
-            
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Váš email" required>
-            
-                        <label for="message">Zpráva:</label>
-                        <textarea id="message" name="message" placeholder="Vaše zpráva" rows="5" required></textarea>
-            
-                        <button type="submit">Odeslat</button>
-                    </form>
-                </div>
-                <div class="map-container">
-                    <h2>Kde nás najdete</h2>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094354!2d144.95373531576896!3d-37.8172097420215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTGlrYSB2YSBtYXB5!5e0!3m2!1scs!2scz!4v1699271174498"
-                        width="100%" 
-                        height="300" 
-                        style="border:0;" 
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-            
             <!-- Notifications Section -->
             <div id="content-notifications" class="content-section" style="display: none;">
                 <h1>Upozornění</h1>
@@ -162,6 +132,83 @@
                     </tbody>
                 </table>
             </div>
+
+
+
+<!-- Modální okno pro úpravy auta -->
+<div id="car-details-modal" style="display:none;">
+    <div>
+        <span id="close-modal" style="cursor:pointer;">&times;</span>
+        <h2 id="car-details-title">Detail auta</h2>
+        <img id="car-details-image" src="" alt="Car Image" style="width: 100px;">
+        <form>
+            <input type="text" id="car-spz" placeholder="SPZ" required />
+            <input type="text" id="car-brand" placeholder="Značka" required />
+            <input type="text" id="car-model" placeholder="Model" required />
+            <input type="number" id="car-year" placeholder="Rok výroby" required />
+            <input type="number" id="car-mileage" placeholder="Kilometry" required />
+            <input type="text" id="car-status" placeholder="Stav" required />
+            <input type="file" id="car-image" accept="image/*" />
+            <button type="button" id="save-changes">Uložit změny</button>
+            <button type="button" id="delete-car">Odstranit auto</button>
+        </form>
+    </div>
+</div>
+
+<div id="content-apps" class="content-section">
+    <h1>Souhrn Transakcí</h1>
+
+    <!-- Formulář pro zadávání nové transakce -->
+    <div class="transaction-form">
+        <h3>Nová Transakce</h3>
+        <form id="transaction-form">
+            <label for="transaction-type">Typ Transakce:</label>
+            <select id="transaction-type" required>
+                <option value="palivo">Palivo</option>
+                <option value="auto">Auto</option>
+                <option value="job">Zakázka</option>
+            </select>
+
+            <label for="transaction-description">Popis:</label>
+            <input type="text" id="transaction-description" required>
+
+            <label for="transaction-amount">Částka:</label>
+            <input type="number" id="transaction-amount" required>
+
+            <label for="transaction-date">Datum:</label>
+            <input type="date" id="transaction-date" required>
+
+            <button type="submit">Přidat Transakci</button>
+        </form>
+    </div>
+
+    <!-- Zobrazování transakcí -->
+    <div class="transactions-container">
+        <div class="transaction-card">
+            <h3>Palivo</h3>
+            <ul id="fuel-transactions">
+                <!-- Dynamicky generované transakce pro palivo -->
+            </ul>
+        </div>
+        <div class="transaction-card">
+            <h3>Auta</h3>
+            <ul id="car-transactions">
+                <!-- Dynamicky generované transakce pro auta -->
+            </ul>
+        </div>
+        <div class="transaction-card">
+            <h3>Zakázky</h3>
+            <ul id="job-transactions">
+                <!-- Dynamicky generované transakce pro zakázky -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+
+
+            
         </main>
     </div>
 
